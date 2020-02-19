@@ -1,0 +1,63 @@
+//package main;
+
+
+
+class TreadMaker {
+	public static void doIt() {
+		Runnable runnable1 = new Thead("textoA",200);
+		Runnable runnable2 = new Thead("textoB",300);
+		Runnable runnable3 = new Thead("textoC",400);
+		
+		Thread t1 = new Thread(runnable1);
+		Thread t2 = new Thread(runnable2);
+		Thread t3 = new Thread(runnable3);
+		
+		t1.start();
+		t2.start();
+		t3.start();
+		
+		try { Thread.sleep(5000); } catch (InterruptedException ignored) {}
+		t1.interrupt();
+		
+		try { Thread.sleep(5000); } catch (InterruptedException ignored) {}
+		t2.interrupt();
+		
+		try { Thread.sleep(5000); } catch (InterruptedException ignored) {}
+		t3.interrupt();
+	}
+	
+	public static void mathQuadrado() {
+		int contador;
+		
+		for(contador=1;contador<100;contador++) {
+			if(contador % 2 !=0) {
+				System.out.println("Raiz de "+contador+": "+Math.sqrt(contador));
+			}
+		}
+		
+	}
+	
+	public static void mathCubico() {
+		int contador;
+		
+		for(contador=1;contador<100;contador++) {
+			if(contador % 2 == 0) {
+				System.out.println("Raiz de "+contador+": "+Math.cbrt(contador));
+			}
+		}
+		
+	}
+	
+	
+}
+
+public class Principal {
+
+	public static void main(String[] args) {
+		TreadMaker.mathQuadrado();
+		TreadMaker.mathCubico();
+		TreadMaker.doIt();
+	
+	}
+}
+

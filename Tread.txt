@@ -1,0 +1,31 @@
+//package main;
+
+public class Thead implements Runnable {
+	
+	private String texto;
+	private int milissegundos;
+	
+	public Thead(String texto, int milissegundos) {
+		this.texto=texto;
+		this.milissegundos=milissegundos;
+	}
+
+	public void run() {
+		boolean interrupt = false;
+		int contador = 1;
+		
+		try { 
+			while(!interrupt) {			
+				interrupt = Thread.interrupted();
+		
+				System.out.println(texto+" "+contador);
+				contador++;
+	
+				Thread.sleep(milissegundos);
+			}
+		} catch (InterruptedException e) {
+				System.out.println("Fim do "+texto);
+		}
+
+	}
+}
